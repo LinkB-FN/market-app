@@ -1,5 +1,6 @@
 package com.tecdesoftware.market.persistence.crud;
 import com.tecdesoftware.market.persistence.entity.Producto;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +14,12 @@ public interface ProductoCrudRepository extends CrudRepository<Producto, Integer
     //Order by nombre ASC
     List<Producto> findByIdCategoriaOrderByNombreAsc(int idCategoria);
 
-    //cantidad en stock
+    // Productos con stock menor que cantidad y estado activo
     Optional<List<Producto>> findByCantidadStockLessThanAndEstado(int cantidadStock, boolean estado);
 
+    // Nuevo método para traer productos junto con la categoría usando JOIN FETCH
+    @Query("SELECT p FROM Producto p JOIN FETCH p.categoria")
+    List<Producto> findAllWithCategoria();
 
-    Integer idProducto(Integer idProducto);
+    // Nota: el método idProducto no es necesario aquí, lo puedes eliminar si no lo usas
 }

@@ -29,8 +29,9 @@ import java.util.List;
     @JoinColumn(name="id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "producto")
-    private List<CompraProducto> Productos;
+    @OneToMany(mappedBy = "compra")
+    private List<CompraProducto> productos;
+
 
     public Integer getIdCompra() {
         return idCompra;

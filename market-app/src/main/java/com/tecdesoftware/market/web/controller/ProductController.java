@@ -17,6 +17,7 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private ProductoRepository productoRepository;
+
     @GetMapping("")
     public ResponseEntity<List<Product>> getAll() {
         return new ResponseEntity<>(productService.getAll(),HttpStatus.OK) ;

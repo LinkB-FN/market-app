@@ -1,5 +1,6 @@
 package com.tecdesoftware.market.persistence.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -25,7 +26,9 @@ public class Categoria {
     }
 
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore // <- evita que devuelva lista de productos dentro de cada categoría
     private List<Producto> productos;
+
 
     public Integer getIdCategoria() {
         return idCategoria;

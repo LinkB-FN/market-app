@@ -1,4 +1,5 @@
 package com.tecdesoftware.market.persistence.entity;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import javax.smartcardio.CardTerminal;
@@ -31,7 +32,9 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    @JsonIgnoreProperties("productos")  // Ignorar propiedad inversa si existe en Categoria
     private Categoria categoria;
+
 
     public Integer getIdProducto() {
         return idProducto;

@@ -22,9 +22,10 @@ public class ProductoRepository implements ProductRepository {
 
     @Override
     public List<Product> getAll() {
-        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
+        List<Producto> productos = productoCrudRepository.findAllWithCategoria();
         return mapper.toProducts(productos);
     }
+
 
     @Override
     public Optional<List<Product>> getByCategory(int categoryId) {
