@@ -3,21 +3,21 @@ package com.tecdesoftware.market.persistence.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="compras_productos")
+@Table(name= "compras_productos")
 public class CompraProducto {
 
-    @EmbeddedId
+    @EmbeddedId //Viene de nuestra clase CompraProductoPK
     private CompraProductoPK id;
-
+    private Integer cantidad;
     private Double total;
     private Boolean estado;
 
     @ManyToOne
-    @JoinColumn(name="id_compra", insertable = false, updatable = false)
-    private Compras compras;
+    @JoinColumn(name = "id_compra", insertable = false, updatable = false)
+    private Compra compra;
 
     @ManyToOne
-    @JoinColumn(name="id_producto", insertable = false, updatable = false)
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
 
     public CompraProductoPK getId() {
@@ -26,6 +26,14 @@ public class CompraProducto {
 
     public void setId(CompraProductoPK id) {
         this.id = id;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Double getTotal() {
@@ -44,3 +52,4 @@ public class CompraProducto {
         this.estado = estado;
     }
 }
+
