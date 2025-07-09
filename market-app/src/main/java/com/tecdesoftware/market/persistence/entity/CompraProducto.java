@@ -6,19 +6,39 @@ import jakarta.persistence.*;
 @Table(name= "compras_productos")
 public class CompraProducto {
 
-    @EmbeddedId //Viene de nuestra clase CompraProductoPK
+    @EmbeddedId
     private CompraProductoPK id;
+
     private Integer cantidad;
     private Double total;
     private Boolean estado;
 
     @ManyToOne
+    @MapsId("idCompra")
     @JoinColumn(name = "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
     @ManyToOne
+    @MapsId("idProducto")
     @JoinColumn(name = "id_producto", insertable = false, updatable = false)
     private Producto producto;
+
+    // Getters y Setters
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 
     public CompraProductoPK getId() {
         return id;
@@ -52,4 +72,3 @@ public class CompraProducto {
         this.estado = estado;
     }
 }
-

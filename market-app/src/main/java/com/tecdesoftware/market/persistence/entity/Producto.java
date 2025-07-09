@@ -1,5 +1,4 @@
 package com.tecdesoftware.market.persistence.entity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import javax.smartcardio.CardTerminal;
@@ -9,7 +8,7 @@ import javax.smartcardio.CardTerminal;
 public class Producto {
 
     @Id
-    //Valor único autoincrementable
+    //Valor Ãºnico autoincrementable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id_producto")
     private Integer idProducto;
@@ -32,9 +31,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    @JsonIgnoreProperties("productos")  // Ignorar propiedad inversa si existe en Categoria
     private Categoria categoria;
-
 
     public Integer getIdProducto() {
         return idProducto;
