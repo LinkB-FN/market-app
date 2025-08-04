@@ -74,7 +74,8 @@ public class Cliente {
     }
 
     public void setCorreoElectronico(String correoElectronico) {
-        correoElectronico = correoElectronico;
+
+        this.correoElectronico = correoElectronico;
     }
 
     public String getContrasena() {

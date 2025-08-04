@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 //Le dice a Spring que va a ser el controlador de una API REST
+@CrossOrigin(origins = "http://localhost:*") // Permitir cualquier puerto local en desarrollo
 @RestController
 @RequestMapping("/products")
 @Tag(name = "Product Controller", description = "Manage products in the store")
